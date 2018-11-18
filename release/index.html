@@ -1,0 +1,45 @@
+---
+layout: default
+title: Release Notes
+
+releases:
+ -
+    version: 1.2
+    date: "november 2018"
+    notes:
+      - "Some release info"
+      - "Fixed this important bug"
+      - "More cool things"
+    credits: "an awesome developer"
+ -
+    version: 1.1
+    date: "october 2018"
+    notes:
+      - "Release info"
+---
+
+{% for release in page.releases %}
+  <h2>{{ release.date | capitalize | append : " Release"}}</h2>
+  <h3>Version {{ release.version }}</h3>
+
+  {% assign store="Google Play Store" %}
+  {% capture install_instructions %}
+    To upgrade to this version, update via {{ store }}
+  {% endcapture %}
+  <p>{{ install_instructions }}</p>
+
+  <h5>Notes for this release:</h5>
+  <ul>
+    {% for note in release.notes %}
+      <li>{{ note }}</li>
+    {% endfor %}
+  </ul>
+  
+  {% if release.credits %}
+    Thank you to {{ release.credits }}
+  {% else %}
+    No credits for this release
+  {% endif %}
+
+  <hr>
+{% endfor %}
