@@ -19,10 +19,13 @@ releases:
 ---
 
 {% for release in page.releases %}
+  <!-- Filters -->
   <h2>{{ release.date | capitalize | append : " Release"}}</h2>
   <h3>Version {{ release.version }}</h3>
 
+  <!-- Tags: variable assignment -->
   {% assign store="Google Play Store" %}
+  <!-- Tags: variable capture -->
   {% capture install_instructions %}
     To upgrade to this version, update via {{ store }}
   {% endcapture %}
@@ -30,11 +33,13 @@ releases:
 
   <h5>Notes for this release:</h5>
   <ul>
+    <!-- Tag: iteration -->
     {% for note in release.notes %}
       <li>{{ note }}</li>
     {% endfor %}
   </ul>
-  
+
+  <!-- Tags: control flow -->  
   {% if release.credits %}
     Thank you to {{ release.credits }}
   {% else %}
